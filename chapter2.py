@@ -83,3 +83,53 @@ for key, value in delhi._asdict().items():
 # country: IN
 # population: 21.935
 # coordinates: Latlong(lat=28.613889, long=77.208889)
+
+# --------------------------------------------------------
+# Slicing
+s = 'bicycle'
+print(s[::3])
+# >>> 'bye'
+print(s[::-1])
+# >>> 'elcycib'
+print(s[::-2])
+# >>> 'eccb'
+
+l = list(range(10))
+# >>> l: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+l[2:5] = [20, 30]
+# >>> l: [0, 1, 20, 30, 5, 6, 7, 8, 9]
+del l[5:7]
+# >>> l: [0, 1, 20, 30, 5, 8, 9]
+l[3::2] = [11, 22]
+# >>> l: [0, 1, 20, 11, 5, 22, 9]
+l[2: 5] = [100]  # l[2:5] = 100 returns Typeerror: can only assign an iterable
+# >>> l: [0, 1, 100, 22, 9]
+
+# --------------------------------------------------------
+# 2.5 Using '+' and '*' on sequences
+l = [1, 2, 3]
+print(l * 5)
+# >>> [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+print(5 * 'abc')
+# >>> 'abcabcabcabcabc'
+
+board = [['_'] * 3 for i in range(3)]  # weird_board = [['_'] * 3] * 3 WRONG!
+# >>> board[['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]
+
+# --------------------------------------------------------
+# 2.6 list augmented assignment
+l = [1, 2, 3]
+# >>> id(l) = 123456
+l *= 2
+# >>> id(l) = 123456
+t = (1, 2, 3)
+# >>> id(t) = 456789
+t *= 2  # ID is changed
+# >>> id(t) = 987654
+
+t = (1, 2, [30, 40])
+# t[2] += [50, 60]
+# >>> t -> (1, 2, [30, 40, 50, 60]) but also a TypeError: 'tuple' object does not support item assignment
+t[2].extend([50, 60])
+# >>> t -> (1, 2, [30, 40, 50, 60]) and no errors
+
